@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -42,6 +43,7 @@ public class Testbase {
 
 		if (browsername.equalsIgnoreCase("chrome")) {
 
+			System.setProperty("webdriver.chrome.driver", "C:\\Users\\sree\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
 			driver = new ChromeDriver();
 		}
 
@@ -55,9 +57,9 @@ public class Testbase {
 		}
 
 		driver.manage().window().maximize();
-		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
+		driver.manage().timeouts().pageLoadTimeout(15,TimeUnit.SECONDS);
 		driver.get(props.getProperty("url"));
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+		driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
 		//driver.manage().deleteAllCookies();
 
 		

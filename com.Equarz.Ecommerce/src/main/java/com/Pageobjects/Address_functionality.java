@@ -29,7 +29,7 @@ public class Address_functionality extends Testbase {
 	WebElement type;
 	@FindBy(id = "add_new_address")
 	WebElement newaddress;
-	@FindBy(id = "name")
+	@FindBy(xpath = "//input[@id='name']")
 	WebElement name;
 	@FindBy(id = "person_name")
 	WebElement personna;

@@ -3,6 +3,7 @@ package com.Pageobjects;
 import static org.testng.Assert.assertEquals;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -93,7 +94,7 @@ public class Buynow_Functionality extends Testbase {
 		 payment.click();
 		 Thread.sleep(3000);
 		 COD.click();
-		 wait= new WebDriverWait(driver, Duration.ofSeconds(20));
+		 wait= new WebDriverWait(driver, 15);
 		 String msg=wait.until(ExpectedConditions.visibilityOf(orderplaced)).getText();
 	 	assertEquals(msg, "Your order has been placed successfully! !");
 		 

@@ -4,9 +4,11 @@ package com.Pageobjects;
 	import org.openqa.selenium.support.FindBy;
 	import org.openqa.selenium.support.PageFactory;
 
-	import com.base.Testbase;
+import com.Utils.Utils;
+import com.base.Testbase;
 
 	public class Register_Functionality extends Testbase{
+		Utils uts=new Utils();
 		@FindBy(xpath = "//input[@name='f_name']")
 		WebElement firstname;
 		
@@ -47,10 +49,10 @@ package com.Pageobjects;
 			password.sendKeys(Password1);
 			confirm_password.sendKeys(Confirmpassword);
 			checkbox.click();
-			//Thread.sleep(15000);
-			Thread.sleep(2000);
+			Thread.sleep(15000);
+			//Thread.sleep(2000);
 			signup.click();
-			
+			Thread.sleep(2000);
 			return new Homepage();
 		}
 	}

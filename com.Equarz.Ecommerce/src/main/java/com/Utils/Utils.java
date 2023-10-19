@@ -1,10 +1,16 @@
 package com.Utils;
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.DataProvider;
@@ -41,7 +47,20 @@ public class Utils extends Testbase {
 		sel.selectByValue(text);
 
 	}
+public static void robo() throws Throwable
+{
+	Robot robo=new Robot();
+	robo.delay(3000);
 
+	StringSelection upload=new StringSelection("C:\\Users\\sree\\Downloads\\pic");
+	Toolkit.getDefaultToolkit().getSystemClipboard().setContents(upload, null);
+	robo.keyPress(KeyEvent.VK_CONTROL);
+	robo.keyPress(KeyEvent.VK_V);
+	robo.keyRelease(KeyEvent.VK_CONTROL);
+	robo.keyRelease(KeyEvent.VK_V);
+	robo.keyPress(KeyEvent.VK_ENTER);
+	robo.keyRelease(KeyEvent.VK_ENTER);
+}
 }
 
 
