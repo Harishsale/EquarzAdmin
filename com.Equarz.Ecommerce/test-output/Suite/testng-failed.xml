@@ -6,10 +6,23 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
+      <class name="com.Equarz.Testcases.BuynowTest">
+        <methods>
+          <include name="Buynow1"/>
+          <include name="Buynow2"/>
+          <include name="Buynow"/>
+          <include name="initialize"/>
+        </methods>
+      </class> <!-- com.Equarz.Testcases.BuynowTest -->
+      <class name="com.Equarz.Testcases.AddressTest">
+        <methods>
+          <include name="initialise"/>
+          <include name="editing" invocation-numbers="1 2 3"/>
+        </methods>
+      </class> <!-- com.Equarz.Testcases.AddressTest -->
       <class name="com.Equarz.Testcases.LoginTest">
         <methods>
           <include name="shutdown"/>
-          <include name="verifyurl"/>
           <include name="initialize"/>
           <include name="verifylog"/>
         </methods>

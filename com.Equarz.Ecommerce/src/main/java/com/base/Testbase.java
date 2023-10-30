@@ -11,7 +11,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.Utils.Screenshot;
 
 public class Testbase {
 
@@ -19,7 +23,8 @@ public class Testbase {
 	public static Properties props;
 	public static WebDriver driver;
 	public static WebDriverWait wait;
-
+public static EventFiringWebDriver edriver; 
+public static Screenshot event;
 	public Testbase() {
 		
 		props = new Properties();
@@ -54,7 +59,12 @@ public class Testbase {
 
 		else if (browsername.equalsIgnoreCase("firefox")) {
 			driver = new FirefoxDriver();
+	
 		}
+edriver=new EventFiringWebDriver(driver);
+event=new Screenshot();
+edriver.register((WebDriverEventListener) event);
+driver=edriver;
 
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(15,TimeUnit.SECONDS);

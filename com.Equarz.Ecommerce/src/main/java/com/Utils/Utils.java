@@ -6,11 +6,15 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.DataProvider;
@@ -23,8 +27,7 @@ public class Utils extends Testbase {
 	@DataProvider
 
 	public static String[][] setdata(String sheetname) throws Throwable {
-
-		File file = new File("C:\\Users\\sree\\git\\Eccomerce_Project\\com.Equarz.Ecommerce\\src\\main\\java\\com\\testdata\\Registration data.xlsx");
+		File file = new File("C:\\Users\\sree\\git\\Equarz\\com.Equarz.Ecommerce\\src\\main\\java\\com\\testdata\\Registration data.xlsx");
 		FileInputStream stream = new FileInputStream(file);
 		XSSFWorkbook workbook = new XSSFWorkbook(stream);
 		XSSFSheet sheet = workbook.getSheet(sheetname);
@@ -61,6 +64,21 @@ public static void robo() throws Throwable
 	robo.keyPress(KeyEvent.VK_ENTER);
 	robo.keyRelease(KeyEvent.VK_ENTER);
 }
+public static void takeScreenshotAtEndOfTest() throws IOException {
+	File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+	String currentDir = System.getProperty("user.dir");
+
+	FileUtils.copyFile(scrFile, new File(currentDir + "/screenshots/" + System.currentTimeMillis() + ".png"));
+
 }
+public static void takeScreenshot1AtEndOfTest(String methodname) throws IOException {
+	File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+	String currentDir = System.getProperty("user.dir");
+
+	FileUtils.copyFile(scrFile, new File(currentDir + "/screenshots/" + System.currentTimeMillis() + ".png"));
+
+}
+}
+
 
 

@@ -1,5 +1,6 @@
 package com.Equarz.Testcases;
 
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -50,9 +51,14 @@ return uts.setdata(sheetname1);
 Af.editaddress(personname2,phonenumber2,cityname2,
 		pincode2,addressofperson2);	
 }
-@Test
+@Test(priority = 3)
 	public void del() throws Throwable
 {
 Af.deleteaddress();	
+}
+@AfterClass
+public void shutdown()
+{
+driver.close();	
 }
 }

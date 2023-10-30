@@ -1,11 +1,11 @@
 package com.Pageobjects;
 
-import javax.swing.JOptionPane;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 
 import com.base.Testbase;
 
@@ -41,12 +41,18 @@ public class Login_Functionality extends Testbase {
 			e.printStackTrace();
 		}
 		signnbtn.click();
+		String url=driver.getCurrentUrl();
+		Assert.assertEquals("http://e-quarz.com/", url);
 		return new Homepage();
 				
 	}
 	
 	
-
+@AfterMethod
+public void shutdown()
+{
+driver.close();	
+}
 	
 
 	
