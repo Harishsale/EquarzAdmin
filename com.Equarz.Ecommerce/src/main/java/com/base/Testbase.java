@@ -48,7 +48,7 @@ public static Screenshot event;
 
 		if (browsername.equalsIgnoreCase("chrome")) {
 
-			System.setProperty("webdriver.chrome.driver", "C:\\Users\\sree\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+			//System.setProperty("webdriver.chrome.driver", "C:\\Users\\sree\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
 			driver = new ChromeDriver();
 		}
 
@@ -61,15 +61,15 @@ public static Screenshot event;
 			driver = new FirefoxDriver();
 	
 		}
-edriver=new EventFiringWebDriver(driver);
-event=new Screenshot();
-edriver.register((WebDriverEventListener) event);
-driver=edriver;
+//edriver=new EventFiringWebDriver(driver);
+//event=new Screenshot();
+//edriver.register((WebDriverEventListener) event);
+//driver=edriver;
 
 		driver.manage().window().maximize();
-		driver.manage().timeouts().pageLoadTimeout(15,TimeUnit.SECONDS);
+	//	driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
 		driver.get(props.getProperty("url"));
-		driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		//driver.manage().deleteAllCookies();
 
 		

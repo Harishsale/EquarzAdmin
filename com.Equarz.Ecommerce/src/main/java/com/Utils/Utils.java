@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -19,6 +20,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.DataProvider;
 
+import com.Pageobjects.Homepage;
 import com.base.Testbase;
 
 
@@ -77,6 +79,19 @@ public static void takeScreenshot1AtEndOfTest(String methodname) throws IOExcept
 
 	FileUtils.copyFile(scrFile, new File(currentDir + "/screenshots/" + System.currentTimeMillis() + ".png"));
 
+}
+public Homepage Windowhandless(String window)
+{
+	Set<String> handles = driver.getWindowHandles();
+	for (String hand : handles) {
+		if (!window.equals(hand)) {
+			driver.switchTo().window(hand);
+			driver.manage().window().maximize();
+			
+			
+		}
+	}
+	return new Homepage();
 }
 }
 
